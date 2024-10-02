@@ -1,0 +1,28 @@
+plugins:
+- config:
+    custom_fields_by_lua: {}
+    path: /dev/stdout
+    reopen: false
+  enabled: true
+  name: file-log
+  service: ${{ env "DECK_GATEWAY_SERVICE_NAME" }}
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+- config:
+    ai_metrics: false
+    bandwidth_metrics: true
+    latency_metrics: true
+    per_consumer: true
+    status_code_metrics: true
+    upstream_health_metrics: true
+  enabled: true
+  name: prometheus
+  service: ${{ env "DECK_GATEWAY_SERVICE_NAME" }}
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
